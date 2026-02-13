@@ -1,7 +1,7 @@
 
 import json
 
-def gestion_herramientas(nom_archivo="Herramientas.json"):
+def gestion_tools(nom_archivo="Herramientas.json"):
     try:
         with open(nom_archivo, "r") as arch:
             return json.load(arch)
@@ -11,6 +11,7 @@ def gestion_herramientas(nom_archivo="Herramientas.json"):
 def guardar_datos(datos, nom_archivo="Herramientas.json"):
     try:
         with open(nom_archivo, "w") as arch:
-            json.dump(datos, arch)
+            json.dump(datos, arch, indent=4)
+        print("Datos guardados correctamente.")
     except Exception as ex:
-        datos = {}
+        print("Error al guardar:", ex)

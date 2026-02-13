@@ -1,26 +1,29 @@
-def agregar_Tools(datos, id, categoria, stock, valor, estado = None):
+def agregar_Tools(datos, id, nombre, categoria, stock, valor, estado = None):
     if id in datos:
         print("Ya existe una herramienta con ese ID, por favor, intentelo nuevamente")
         return
 
     datos[id] = {
+        "nombre": nombre,
         "categoria": categoria,
         "stock": stock,
         "valor": valor,
         "estado": estado
                 }
     print("Herramienta agregado exitosamente")
+    return
 
-def modificar_Tools(datos, id, campo, n_valor):
+def modificar_tool(datos, id, campo, nuevo_valor):
     if id not in datos:
-        print("La herramienta no existe, por favor, intentelo nuevamente")
+        print("La herramienta no existe.")
         return
     if campo not in datos[id]:
-        print("Campo Invalido")
+        print("Campo inválido.")
         return
-    
-    datos[id][campo] = n_valor
-    print(f"Herramienta {id} actualizada correctamente.")
+
+    datos[id][campo] = nuevo_valor
+    print("Herramienta actualizada correctamente.")
+
 
 def listar_tools(datos):
     if not datos:
@@ -43,6 +46,7 @@ def eliminar_Tool(datos, id):
     
     del datos [id]
     print(f"Se ha eliminado la herramienta con id: {id} ")
+    return
 
 
 
