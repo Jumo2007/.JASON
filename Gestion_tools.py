@@ -13,16 +13,46 @@ def agregar_Tools(datos, id, nombre, categoria, stock, valor, estado = None):
     print("Herramienta agregado exitosamente")
     return
 
-def modificar_tool(datos, id, campo, nuevo_valor):
-    if id not in datos:
+def modificar_tool(datos, id_herramienta):
+    if id_herramienta not in datos:
         print("La herramienta no existe.")
         return
-    if campo not in datos[id]:
-        print("Campo inválido.")
+
+    print("\nCampos disponibles para actualizar:")
+    print("1. nombre")
+    print("2. categoria")
+    print("3. stock")
+    print("4. valor")
+    print("5. estado")
+
+    opcion = input("Seleccione el campo a modificar: ")
+
+    campos = {
+        "1": "nombre",
+        "2": "categoria",
+        "3": "stock",
+        "4": "valor",
+        "5": "estado"
+    }
+
+    if opcion not in campos:
+        print("Opción inválida.")
         return
 
-    datos[id][campo] = nuevo_valor
-    print("Herramienta actualizada correctamente.")
+    campo = campos[opcion]
+    nuevo_valor = input("Ingrese el nuevo valor: ")
+
+    if campo == "stock" or campo == "valor":
+        try:
+            nuevo_valor = int(nuevo_valor)
+        except ValueError:
+            print("Debe ingresar un número válido.")
+            return
+
+    datos[id_herramienta][campo] = nuevo_valor
+
+    print("✔ Herramienta actualizada correctamente.")
+
 
 
 def listar_tools(datos):
@@ -32,6 +62,7 @@ def listar_tools(datos):
 
     for id, info in datos.items():
         print(f"\nID: {id}")
+        print(f"Nombre: {info['nombre']}")
         print(f"Categoría: {info['categoria']}")
         print(f"Stock: {info['stock']}")
         print(f"Valor: {info['valor']}")
@@ -47,6 +78,21 @@ def eliminar_Tool(datos, id):
     del datos [id]
     print(f"Se ha eliminado la herramienta con id: {id} ")
     return
+
+def herramientas_stock_bajo(datos, limite=2):
+
+    print("\n=== HERRAMIENTAS CON STOCK BAJO ===")
+
+    encontrado = False
+
+    for id, info in datos.items():
+        if info["stock"] <= limite:
+            encontrado = True
+            print(f"ID: {id} | Nombre: {info['nombre']} | Stock: {info['stock']}")
+
+    if not encontrado:
+        print("No hay herramientas con stock bajo.")
+
 
 
 

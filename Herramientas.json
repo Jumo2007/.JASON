@@ -1,0 +1,9 @@
+{
+    "063": {
+        "nombre": "Hammer",
+        "categoria": "Pool",
+        "stock": 19,
+        "valor": "15_000",
+        "estado": "disponible"
+    }
+}

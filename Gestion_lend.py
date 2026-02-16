@@ -16,8 +16,11 @@ def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
         return
 
     if herramientas[id_herramienta]["stock"] < cantidad:
+        from Logs import log_error
+        log_error("Intento de préstamo sin stock suficiente.")
         print("No hay suficiente stock.")
         return
+
 
 
     herramientas[id_herramienta]["stock"] -= cantidad
@@ -53,43 +56,37 @@ def listar_prestamos(prestamos):
         print("-" * 30)
 
 
-def act_ven(prestamos):
 
-    if not prestamos:
-        print("No hay préstamos registrados.")
+
+def devolver_prestamo(prestamos, herramientas, id_prestamo):
+
+    if id_prestamo not in prestamos:
+        print("El préstamo no existe.")
         return
 
-    print("\n=== PRÉSTAMOS ACTIVOS ===")
-    hay_activos = False
+    prestamo = prestamos[id_prestamo]
+
+    if prestamo["estado"] != "activo":
+        print("El préstamo no está activo.")
+        return
+
+    herramientas[prestamo["herramienta"]]["stock"] += prestamo["cantidad"]
+    prestamo["estado"] = "devuelto"
+
+    print("Préstamo devuelto correctamente.")
+
+
+
+def historial_usuario(prestamos, id_usuario):
+
+    print(f"\n=== HISTORIAL DEL USUARIO {id_usuario} ===")
+
+    encontrado = False
 
     for id_prestamo, info in prestamos.items():
-        if info["estado"] == "activo":
-            hay_activos = True
-            print(f"\nID: {id_prestamo}")
-            print(f"Usuario: {info['usuario']}")
-            print(f"Herramienta: {info['herramienta']}")
-            print(f"Cantidad: {info['cantidad']}")
-            print(f"Fecha devolución: {info['fecha_devolucion']}")
-            print("-" * 25)
+        if info["usuario"] == id_usuario:
+            encontrado = True
+            print(f"Préstamo: {id_prestamo} | Estado: {info['estado']}")
 
-    if not hay_activos:
-        print("No hay préstamos activos.")
-
-    print("\n=== PRÉSTAMOS VENCIDOS ===")
-    hay_vencidos = False
-
-    for id_prestamo, info in prestamos.items():
-        if info["estado"] == "vencido":
-            hay_vencidos = True
-            print(f"\nID: {id_prestamo}")
-            print(f"Usuario: {info['usuario']}")
-            print(f"Herramienta: {info['herramienta']}")
-            print(f"Cantidad: {info['cantidad']}")
-            print(f"Fecha devolución: {info['fecha_devolucion']}")
-            print("-" * 25)
-
-    if not hay_vencidos:
-        print("No hay préstamos vencidos.")
-
-
-
+    if not encontrado:
+        print("Este usuario no tiene préstamos.")

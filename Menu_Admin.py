@@ -1,32 +1,40 @@
-from Gestion_user import agregar_user, modificar_user, eliminar_user, mostrar_users
-
-from Gestion_tools import agregar_Tools, modificar_tool, listar_tools, eliminar_Tool
-
-from Gestion_lend import crear_prestamo, listar_prestamos, act_ven
+from Gestion_dates import gestion_tools
+from Gestion_lend import listar_prestamos
 
 def menu_admin():
+
+    usuarios = gestion_tools("Usuarios.json")
+    herramientas = gestion_tools("Herramientas.json")
+    prestamos = gestion_tools("Prestamos.json")
+
     while True:
         print("\n=== MENÚ ADMINISTRADOR ===")
-        print("1. Gestionar Usuarios")
-        print("2. Gestionar Herramientas")
-        print("3. Gestionar Préstamos")
-        print("4. Ver Reportes")
+        print("1. Usuarios")
+        print("2. Herramientas")
+        print("3. Préstamos")
+        print("4. Reportes")
         print("5. Salir")
-        print("------------------------------")
 
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            print("Entrando a gestión de usuarios...")
-        
+            from Madm_user import menu_usuarios
+            menu_usuarios(usuarios)
+
         elif opcion == "2":
-            print("Entrando a gestión de herramientas...")
+            from Madm_tool import menu_herramientas
+            menu_herramientas(herramientas)
+
         elif opcion == "3":
-            print("Entrando a gestión de préstamos...")
+            from Madm_lend import menu_prestamos
+            menu_prestamos(prestamos, usuarios, herramientas)
+
         elif opcion == "4":
-            print("Mostrando reportes...")
+            listar_prestamos(prestamos)
+
         elif opcion == "5":
-            print("Saliendo...")
+            print("Saliendo del menú administrador...")
             break
+
         else:
             print("Opción inválida.")
