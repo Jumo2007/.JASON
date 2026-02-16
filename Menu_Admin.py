@@ -1,5 +1,9 @@
 from Gestion_dates import gestion_tools
 from Gestion_lend import listar_prestamos
+from reports import mostrar_reportes
+from Logs import log_info, log_error
+
+
 
 def menu_admin():
 
@@ -13,7 +17,8 @@ def menu_admin():
         print("2. Herramientas")
         print("3. Préstamos")
         print("4. Reportes")
-        print("5. Salir")
+        print("5. Consultas")
+        print("6. Salir")
 
         opcion = input("Seleccione una opción: ")
 
@@ -33,6 +38,9 @@ def menu_admin():
             listar_prestamos(prestamos)
 
         elif opcion == "5":
+            mostrar_reportes(herramientas, prestamos)
+
+        elif opcion == "6":
             print("Saliendo del menú administrador...")
             break
 

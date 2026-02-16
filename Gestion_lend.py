@@ -1,3 +1,4 @@
+from Logs import log_error, log_info
 def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
                    id_usuario, id_herramienta,
                    cantidad, fecha_inicio,
@@ -20,6 +21,12 @@ def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
         log_error("Intento de préstamo sin stock suficiente.")
         print("No hay suficiente stock.")
         return
+    log_error(f"Stock insuficiente para herramienta {id_herramienta}")
+
+
+
+   
+
 
 
 
@@ -36,6 +43,8 @@ def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
     }
 
     print("Préstamo creado correctamente.")
+    log_info(f"Préstamo creado: {id_prestamo}")
+
 
 
 def listar_prestamos(prestamos):

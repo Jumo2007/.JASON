@@ -1,3 +1,4 @@
+from Logs import log_info
 def agregar_Tools(datos, id, nombre, categoria, stock, valor, estado = None):
     if id in datos:
         print("Ya existe una herramienta con ese ID, por favor, intentelo nuevamente")
@@ -51,7 +52,9 @@ def modificar_tool(datos, id_herramienta):
 
     datos[id_herramienta][campo] = nuevo_valor
 
-    print("✔ Herramienta actualizada correctamente.")
+    print(" Herramienta actualizada correctamente.")
+    log_info(f"Herramienta modificada: {id}")
+
 
 
 
