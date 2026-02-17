@@ -34,8 +34,11 @@ def menu_herramientas(herramientas):
         elif op == "4":
             id_herramienta = input("Ingrese el ID de la herramienta a modificar: ")
             modificar_tool(herramientas, id_herramienta)
-            guardar_datos(herramientas, "Herramientas.json")    
+            guardar_datos(herramientas, "Herramientas.json")  
 
+        elif op == "5":
+            print("Volviendo al menú anterior...")
+            break
 
         else:
             print("Opción inválida.")

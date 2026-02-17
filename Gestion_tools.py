@@ -51,7 +51,7 @@ def modificar_tool(datos, id_herramienta):
 
     datos[id_herramienta][campo] = nuevo_valor
 
-    print("✔ Herramienta actualizada correctamente.")
+    print(" Herramienta actualizada correctamente.")
 
 
 

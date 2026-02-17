@@ -16,3 +16,6 @@ def log_info(mensaje):
 
 def log_error(mensaje):
     logging.error(mensaje)
+
+
+
