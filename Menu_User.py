@@ -5,7 +5,7 @@ from Gestion_dates import guardar_datos
 def menu_user(usuarios, herramientas, prestamos,):
     print("DEBUG: parámetros recibidos correctamente")
     while True:
-        print("\n=== MENÚ USUARIO ===")
+        print("=== MENÚ USUARIO ===")
         print("1. Consultar herramientas")
         print("2. Solicitar préstamo")
         print("3. Ver mis préstamos")

@@ -1,4 +1,3 @@
-
 import json
 
 def gestion_tools(nom_archivo="Herramientas.json"):
