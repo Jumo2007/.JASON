@@ -1,3 +1,4 @@
+
 def agregar_Tools(datos, id, nombre, categoria, stock, valor, estado = None):
     if id in datos:
         print("Ya existe una herramienta con ese ID, por favor, intentelo nuevamente")
@@ -18,7 +19,7 @@ def modificar_tool(datos, id_herramienta):
         print("La herramienta no existe.")
         return
 
-    print("\nCampos disponibles para actualizar:")
+    print("Campos disponibles para actualizar:")
     print("1. nombre")
     print("2. categoria")
     print("3. stock")
@@ -55,13 +56,15 @@ def modificar_tool(datos, id_herramienta):
 
 
 
+
+
 def listar_tools(datos):
     if not datos:
         print("No hay herramientas registradas por el momento.")
         return
 
     for id, info in datos.items():
-        print(f"\nID: {id}")
+        print(f"ID: {id}")
         print(f"Nombre: {info['nombre']}")
         print(f"Categoría: {info['categoria']}")
         print(f"Stock: {info['stock']}")
@@ -81,7 +84,7 @@ def eliminar_Tool(datos, id):
 
 def herramientas_stock_bajo(datos, limite=2):
 
-    print("\n=== HERRAMIENTAS CON STOCK BAJO ===")
+    print("=== HERRAMIENTAS CON STOCK BAJO ===")
 
     encontrado = False
 

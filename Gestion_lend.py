@@ -16,10 +16,15 @@ def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
         return
 
     if herramientas[id_herramienta]["stock"] < cantidad:
-        from Logs import log_error
-        log_error("Intento de préstamo sin stock suficiente.")
+        
         print("No hay suficiente stock.")
         return
+    
+
+
+
+   
+
 
 
 
@@ -36,6 +41,8 @@ def crear_prestamo(prestamos, usuarios, herramientas, id_prestamo,
     }
 
     print("Préstamo creado correctamente.")
+    
+
 
 
 def listar_prestamos(prestamos):

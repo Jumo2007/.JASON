@@ -1,6 +1,5 @@
 from Gestion_dates import gestion_tools
 
-
 def menu_admin():
 
     usuarios = gestion_tools("Usuarios.json")
@@ -8,7 +7,7 @@ def menu_admin():
     prestamos = gestion_tools("Prestamos.json")
 
     while True:
-        print("\n=== MENÚ ADMINISTRADOR ===")
+        print("=== MENÚ ADMINISTRADOR ===")
         print("1. Usuarios")
         print("2. Herramientas")
         print("3. Préstamos")
@@ -30,10 +29,14 @@ def menu_admin():
             menu_prestamos(prestamos, usuarios, herramientas)
 
         elif opcion == "4":
-            from Reports import mostrar_logs
-            mostrar_logs()
+            from reports import mostrar_reportes
+            mostrar_reportes(herramientas, prestamos)
 
         elif opcion == "5":
+            from reports import mostrar_reportes
+            mostrar_reportes(herramientas, prestamos)
+
+        elif opcion == "6":
             print("Saliendo del menú administrador...")
             break
 
